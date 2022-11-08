@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
 <head>
 	<meta charset="UTF-8"/>
 	<title>Spa Menu</title>
@@ -12,11 +12,42 @@
 
     <div id="clientProfile">
 		<h2>My Profile</h2>
-		<p th:text="${name}">Client Name Here</p>
-		<p th:text="${skintype}">Client Skintype Here</p>
-		<p th:text="${manipedi}">Client Manipedi Selection Here</p>
+		<p th:text="'Client name: ' + ${name}">Client Name Here</p>
+		<p th:text="'Skin Type: ' + ${skintype}">Client Skintype Here</p>
+		<p th:text="'Service: ' + ${manipedi}">Client Manipedi Selection Here</p>
     </div>
+
     <div id="servicesMenu">
-    </div>
+		<table class="table table-striped">
+			<thead>
+			<tr>
+				<th>Recommended Services:</th>
+			</tr>
+			</thead>
+
+			<tr th:each="facial : ${appropriateFacials}">
+				<td th:text="${facial}">List Element</td>
+			</tr>
+		</table>
+
+<!--		Use th:if to determine if the value of manipedi is a "manicure" or "pedicure".-->
+
+<!--		If the value of manipedi is "manicure", the div element containing the h3 that says "Manicure" needs to be on the page-->
+<!--		and the p tag needs to be replaced with the fragment of the manicure description from fragments.html.-->
+
+<!--		If the value of manipedi is "pedicure", the div element containing the h3 that says "Pedicure" needs to be on the page-->
+<!--		and the p tag needs to be replaced with the fragment of the pedicure description from fragments.html.-->
+
+		<div th:if = '${manipedi.equals("Manicure")}'>
+			<h3>Manicure</h3>
+			<div th:replace="fragments :: manicureDescription"></div>
+		</div>
+
+		<div th:if = '${manipedi.equals("Pedicure")}'>
+			<h3>Pedicure</h3>
+			<div th:replace="fragments :: pedicureDescription"></div>
+		</div>
+
+	</div>
 </body>
 </html>
