@@ -11,25 +11,27 @@
             Username:
             <input type = 'text' name = 'username' th:value="${user.username}">
         </label>
-
+        <br>
         <label>
             Email:
             <input name = 'email' th:value="${user.email}">
         </label>
-
+        <br>
         <label>
             Password:
-            <input type = 'password' name = 'password'>
+            <input type = 'password' name = 'password' th:value="${user.password}">
         </label>
-
+        <br>
         <label>
             Verify Password:
-            <input type = 'password' name = 'verify'>
+            <input type = 'password' name = 'verifyPassword' th:value="${user.verifyPassword}">
         </label>
-
-        <p th:text="${error}"></p>
-
+        <br>
+        <p th:text="${errors}"></p>
+        <br>
         <input type = 'submit' value = 'Sign Up'>
+        <br>
+        <a href="http://localhost:8080">Return home</a>
     </form>
 
 </body>
