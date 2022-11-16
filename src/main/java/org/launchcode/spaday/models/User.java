@@ -1,8 +1,21 @@
 package org.launchcode.spaday.models;
 
+import org.springframework.context.annotation.Lazy;
+
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
+
 public class User {
+    @NotEmpty
+    @Size(min = 5, max = 15)
     private String username;
+
+    @Email
     private String email;
+
+    @NotEmpty
+    @Size(min = 6)
     private String password;
 
     public User() {
